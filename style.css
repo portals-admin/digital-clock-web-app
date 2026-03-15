@@ -1,0 +1,102 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.container {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.clock-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem 4rem;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.clock {
+  display: flex;
+  align-items: baseline;
+  gap: 0.1em;
+  line-height: 1;
+}
+
+.time-segment {
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow:
+    0 0 20px rgba(123, 97, 255, 0.8),
+    0 0 60px rgba(123, 97, 255, 0.4);
+  min-width: 2ch;
+  display: inline-block;
+  text-align: center;
+}
+
+.separator {
+  font-size: clamp(2.5rem, 10vw, 6.5rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+  animation: blink 1s step-start infinite;
+  margin: 0 0.05em;
+  line-height: 1;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+
+.period {
+  font-size: clamp(1rem, 3vw, 2rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  margin-left: 0.4em;
+  align-self: flex-end;
+  padding-bottom: 0.3em;
+  text-transform: uppercase;
+}
+
+.date {
+  margin-top: 1.5rem;
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Responsive tweaks for very small screens */
+@media (max-width: 360px) {
+  .clock-card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+}
